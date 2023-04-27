@@ -5,7 +5,7 @@ import Room from '../room/Room.jsx';
 export default function LowerContainer() {
   return (
     <div className="lowerContainer">
-      <FormContainer />
+      
       <Room />
     </div>
   );

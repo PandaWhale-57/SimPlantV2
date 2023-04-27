@@ -13,13 +13,17 @@ module.exports = {
   devServer: {
     host: 'localhost',
     port: 8080,
+    host: 'localhost',
+    port: 8080,
     static: {
       directory: path.resolve(__dirname, 'public'),
       publicPath: '/',
     },
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
     },
     proxy: {
       '/': {

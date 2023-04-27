@@ -1,6 +1,12 @@
 import React, { useRef } from 'react';
+import React, { useRef } from 'react';
 import './formContainerStyle.scss';
 
+
+export default function FormContainer(props) {
+  const { queryPlantFamily, updateSearchPlant } = props;
+  const typedPlantFamily = useRef(null);
+  // console.log(`queryPlantFamily(was the prop drilled?): ${queryPlantFamily}`)
 
 export default function FormContainer(props) {
   const { queryPlantFamily, updateSearchPlant } = props;
