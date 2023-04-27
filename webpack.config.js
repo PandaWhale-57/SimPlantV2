@@ -8,8 +8,11 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
   },
-  mode: 'development',
+  mode: process.env.NODE_ENV,
+
   devServer: {
+    host: 'localhost',
+    port: 8080,
     host: 'localhost',
     port: 8080,
     static: {

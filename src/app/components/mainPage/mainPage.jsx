@@ -4,6 +4,7 @@ import '../formContainer/formContainerStyle.scss';
 import RoomMenu from '../roomMenu/roomMenu.jsx';
 import LowerContainer from '../lowerContainer/lowerContainer.jsx';
 import FormContainer from '../formContainer/formContainer.jsx';
+import PlantContainer from '../plants/plantContainer.jsx';
 import Room from '../room/Room.jsx';
 
 //main container page acts as parent component
@@ -23,58 +24,27 @@ function MainPage() {
   // plant search state
   const [ searchPlant, updateSearchPlant ] = useState('');
 
-  //query from our server api endpoint to get back plant details
-  const queryPlantFamily = (params) => {
-    const plantFamilyEndpoint = `http://localhost:3000/api/plantFamily/${params}`;
-    
-    const fetchPlantFamily = async () => {
-      try {
-        console.log(plantFamilyEndpoint);
-        //make call to backend endpoint that will request plant family data
-        //return value is an array of plant objects
-        console.log('fetch request took place at l.34 mainPage.jsx');
-        const response = await fetch(plantFamilyEndpoint, { headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-          'Access-Control-Allow-Origin': '*',
-        },
-        // mode: 'no-cors',
-        }
-      );
-        const jsonResult = await response.json();
-        console.log('fetchPlantFamily result:', jsonResult);
-        // update selectedPlants array in state with the returned array of objects
-        updateSelectedPlants([...jsonResult]);
-      }
-      catch (err) {
-        console.log('err: ', err);
-        console.log("something went wrong with your query");
-      }
-    };
-    fetchPlantFamily();
+  async function queryPlantFamily(e) {
+    e.preventDefault()
+    console.log('searchPlant', searchPlant)
+    const response = await fetch(`http://localhost:3000/api/plantFamily/${searchPlant}`)
+    const result = await response.json()
+    console.log('result', result)
+    updateSelectedPlants([ ...result ]);
   }
-
-  // async function queryPlantFamily(e) {
-  //   e.preventDefault()
-  //   const response = await fetch(`http://localhost:3000/api/plantFamily/${searchPlant}`)
-  //   const result = await response.json()
-  //   console.log('result', result)
-  //   await updateSelectedPlants([ ...result ])
-  // }
 
 
   
   
   return (
     <div className="page">
-      <RoomMenu />
+      {/* <RoomMenu /> */}
       <FormContainer queryPlantFamily={queryPlantFamily} updateSearchPlant={ updateSearchPlant } />
-      {/* <PlantContainer selectedPlants={selectedPlants}/>  */}
-      <div className="selectedPlants">
-        
-      </div>
-      <Room />
+        <PlantContainer selectedPlants={selectedPlants} updateSelectedPlants={ updateSelectedPlants } /> 
+      <Room roomPlants={roomPlants} updateRoomPlants={updateRoomPlants}/>
     </div>
   );
 }
 
 export default MainPage;
+
