@@ -6,6 +6,8 @@ import LowerContainer from '../lowerContainer/lowerContainer.jsx';
 import FormContainer from '../formContainer/formContainer.jsx';
 import PlantContainer from '../plants/plantContainer.jsx';
 import Room from '../room/Room.jsx';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 //main container page acts as parent component
 
@@ -40,8 +42,10 @@ function MainPage() {
     <div className="page">
       {/* <RoomMenu /> */}
       <FormContainer queryPlantFamily={queryPlantFamily} updateSearchPlant={ updateSearchPlant } />
-      <PlantContainer selectedPlants={selectedPlants} updateSelectedPlants={ updateSelectedPlants } /> 
-      <Room roomPlants={roomPlants} updateRoomPlants={updateRoomPlants}/>
+      <DndProvider backend={HTML5Backend}>
+        <PlantContainer selectedPlants={selectedPlants} updateSelectedPlants={ updateSelectedPlants } /> 
+        <Room roomPlants={roomPlants} updateRoomPlants={updateRoomPlants} selectedPlants={selectedPlants}/>
+      </DndProvider>
     </div>
   );
 }

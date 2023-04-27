@@ -35,7 +35,7 @@ const apiController = {
           console.log('isduplicate')
           res.locals.duplicateFound = true;
           res.locals.plantDetails = result.rows; //pass it within res.locals
-          console.log('duplicate found. \n returning res.locals.platDetails: ', res.locals.plantDetails);
+          console.log('duplicate found. \n returning res.locals.plantDetails: ', res.locals.plantDetails);
           return next();
         } else {
           console.log("move to next middleware bc new family");
@@ -98,7 +98,7 @@ const apiController = {
               plantInfo.push(result)
             })
         }
-        console.log('getPlantDetails complete. returning res.locals.plantDetails: ', res.locals.plantDetails);
+        // console.log('getPlantDetails complete. returning res.locals.plantDetails: ', res.locals.plantDetails);
         res.locals.plantDetails = plantInfo;
         return next()
       },
@@ -130,6 +130,8 @@ const apiController = {
                           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
                           RETURNING *;`
             const result = await pool.query(query, [pid, max_light_lux, min_light_lux, max_temp, min_temp, max_env_humid, min_env_humid, max_soil_moist, min_soil_moist, watering_frequency_per_week, image_url]);              
+            console.log('result', result)
+            // res.locals.plantDetails = result.rows;
           } catch (err) {
             const message = 'error encountered in apiController.addPlantToDB: ' + err;
             console.log(message);
