@@ -14,10 +14,10 @@ export default function PlantContainer(props){
     })
     console.log("num of plants", selectedPlants);
     return (
-      <div className='plantContainer'>
         <Stack direction="row" spacing={2} sx={{
-          overflowY: "scroll", marginBotton: "10px"}} >{plantArray}</Stack>
-      </div>
+          overflowY: "auto", overflowX: "auto", marginBotton: "10px", maxHeight: 280}} p={2} useFlexGap>
+            {plantArray}
+        </Stack>
     )
     //set the dimensions of the plant container
     //increase the sizes of the plant cards

@@ -8,7 +8,7 @@ export default function FormContainer(props) {
   const typedPlantFamily = useRef(null);
   // console.log(`queryPlantFamily(was the prop drilled?): ${queryPlantFamily}`)
   return (
-    <Container maxWidth="md" p={2} sx={{marginBotton:"50px"}}>
+    <Container maxWidth="md" p={2} sx={{marginBotton:"50px", marginTop: "50px"}}>
       <Stack direction="column" sx={{marginBotton:"50px"}} style={{paddingBottom: "50px"}}>
       <form className="plantForm" onSubmit={ queryPlantFamily } >
         <div className="formTitle">ADD PLANT</div>
