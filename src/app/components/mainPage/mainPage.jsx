@@ -40,7 +40,7 @@ function MainPage() {
     <div className="page">
       {/* <RoomMenu /> */}
       <FormContainer queryPlantFamily={queryPlantFamily} updateSearchPlant={ updateSearchPlant } />
-        <PlantContainer selectedPlants={selectedPlants} updateSelectedPlants={ updateSelectedPlants } /> 
+      <PlantContainer selectedPlants={selectedPlants} updateSelectedPlants={ updateSelectedPlants } /> 
       <Room roomPlants={roomPlants} updateRoomPlants={updateRoomPlants}/>
     </div>
   );

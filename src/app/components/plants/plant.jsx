@@ -20,12 +20,12 @@ const Plant = (props) => {
     image_url
   } = details;
   return(
-    <Card sx={{ minWidth: 275, maxWidth: 350, overflowY: scroll, padding: 1, borderRadius: 4 }}>
-      <CardMedia component='img' image={image_url} sx={{maxHeight: 150, maxWidth: 150}}/>
+    <Card sx={{ minWidth: 275, maxWidth: 300, overflowY: scroll, borderRadius: 2 }}>
+      <CardMedia component='img' image={image_url} sx={{maxHeight: 150}}/>
       <CardContent>
-      <Typography variant="subtitle2">Name:</Typography><Typography variant="body2" gutterBottom> {pid} </Typography>
-      <Typography variant="body2">Light needed (lux): {min_light_lux}</Typography>
-      <Typography variant="body2">Watering frequency per week: {watering_frequency_per_week}</Typography>
+      <Typography variant="subtitle1" gutterBottom> {pid} </Typography>
+      <Typography variant="body2" color="text.secondary">Light needed (lux): {min_light_lux}</Typography>
+      <Typography variant="body2" color="text.secondary">Watering frequency per week: {watering_frequency_per_week}</Typography>
         
       </CardContent>
     </Card> 
