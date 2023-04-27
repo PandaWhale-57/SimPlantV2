@@ -1,13 +1,16 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const apiController = require('./apiController');
 const plantController = require('./plantController');
 const apiRoutes = require('./routes/apiRoutes');
 const PORT = 3000;
 
 
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 //start server-serve index.html
 app.get('/', (req, res) => {

@@ -12,7 +12,7 @@ const apiController = require('../apiController.js')
 // on client's call to /plantFamily > server calls plant API > store response to db
 
 router.get('/plantFamily/:family', apiController.getPlantFamily, apiController.getPlantDetails, apiController.addPlantToDB, (req, res) => {
-    return res.status(200).send(res.locals.plantDetails);
+    return res.status(200).json(res.locals.plantDetails);
 });
 
 //, apiController.getPlantDetails, apiController.addPlantToDB,
