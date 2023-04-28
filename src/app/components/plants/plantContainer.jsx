@@ -7,7 +7,6 @@ import { useDrop } from 'react-dnd';
 
 export default function PlantContainer(props){
   const { selectedPlants, updateSelectedPlants } = props;
-  console.log('selectedPlants', selectedPlants);
     //array of objects in the form of selected plants
     const plantArray = [];
     let i = 0;
@@ -20,7 +19,7 @@ export default function PlantContainer(props){
         <Stack direction="row" spacing={2} 
         alignItems="center"
         justifyContent="center"
-        sx={{overflowY: "auto", overflowX: "auto", marginBotton: "10px", maxHeight: 280,  display: 'inline-flex' }} 
+        sx={{overflowY: "auto", overflowX: "auto", marginBotton: "10px", maxHeight: 300,  display: 'inline-flex' }} 
         p={2} 
         useFlexGap flexWrap="wrap">
             {plantArray}

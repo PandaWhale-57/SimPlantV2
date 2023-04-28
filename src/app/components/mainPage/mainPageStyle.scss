@@ -4,9 +4,9 @@
   display: flex;
   flex-direction: column;
   justify-content: left;
+  background-color: $lightPrimary;
   width: 100%;
 }
-
 
 .selectedPlants {
   height: 20vh;
@@ -15,4 +15,9 @@
   border-radius: 10px;
   background-color: lightcyan;
   overflow-x: auto;
+}
+
+.trashCan {
+  width: 50%;
+  background-color: green;
 }
