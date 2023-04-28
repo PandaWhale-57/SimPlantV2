@@ -2,9 +2,8 @@ import React, { useEffect} from 'react';
 import './roomContainerStyle.scss';
 import Plant from '../plants/plant.jsx';
 import Card from '@mui/material/Card';
-import { CardContent, Container, Stack } from '@mui/material';
-import { useDrop } from 'react-dnd';
-
+import { CardContent, Container, Stack, Typography, AppBar, Toolbar } from '@mui/material';
+import { useDrop, useDrag } from 'react-dnd';
 
 
 export default function Room(props) {
@@ -31,16 +30,6 @@ export default function Room(props) {
       )
   }
   
-  useEffect(()=>{
-    console.log('isOver: ', isOver);
-  },[isOver]);
-
-  // console.log("roomPlant", roomPlants);
-  // const plantsInRoom = []
-  // roomPlants.forEach(plant => {
-  //  plantsInRoom.push(<Plant key={plant.pid} draggable details={plant} />)  
-  // })
-  
   const makeRoomArr = (roomPlants) => {
     let displayInRoom = roomPlants.map(plant => {
        console.log('current plant:', plant);
@@ -51,18 +40,22 @@ export default function Room(props) {
  const roomArr = makeRoomArr(roomPlants);
 
   return (
-    <Container sx={{minHeight: "400px", bgcolor: '#d1cdcf', borderRadius: 4, boxShadow: 2}} >
-    DRAG HERE
-    {/* <div ref={dropRef} > */}
-      <Stack direction="row" minHeight="200px" spacing={3} 
-      sx={{overflowX: 'auto', overflowY: 'auto'}}
-      useFlexGap flexWrap="wrap"
-      ref={dropRef} 
-      >
-        {roomArr}
-        {isOver && <div>Drop here</div>}
-      </Stack>
-      {/* </div> */}
-    </Container>
+    <>
+      <Container sx={{minHeight: "400px", width: "90vw", bgcolor: '#d1cdcf', marginTop:"30px", borderRadius: 4, boxShadow: 2}} p={2}>
+          <div className="header" style={{marginTop: "10px"}}>
+            <Typography variant="h5">Living Room</Typography>
+          </div>
+        {roomPlants.length === 0 && <div><Typography variant="body1">Drag here!</Typography></div>}
+        <Stack direction="row" minHeight="200px" maxHeight="500px" spacing={3} 
+        p={2}
+        sx={{overflowX: 'auto', overflowY: 'auto', marginBottom:'30px'}}
+        useFlexGap flexWrap="wrap"
+        ref={dropRef} 
+        >
+          {roomArr}
+        </Stack>
+        
+      </Container>
+    </>
   );
 }

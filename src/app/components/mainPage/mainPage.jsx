@@ -5,9 +5,13 @@ import RoomMenu from '../roomMenu/roomMenu.jsx';
 import LowerContainer from '../lowerContainer/lowerContainer.jsx';
 import FormContainer from '../formContainer/formContainer.jsx';
 import PlantContainer from '../plants/plantContainer.jsx';
+import TrashCan from '..//trashcan/Trashcan.jsx';
 import Room from '../room/Room.jsx';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { useDrop } from 'react-dnd';
+import { CardContent, Container, Stack } from '@mui/material';
+
 
 //main container page acts as parent component
 
@@ -44,7 +48,13 @@ function MainPage() {
       <FormContainer queryPlantFamily={queryPlantFamily} updateSearchPlant={ updateSearchPlant } />
       <DndProvider backend={HTML5Backend}>
         <PlantContainer selectedPlants={selectedPlants} updateSelectedPlants={ updateSelectedPlants } /> 
-        <Room roomPlants={roomPlants} updateRoomPlants={updateRoomPlants} selectedPlants={selectedPlants}/>
+        <Container maxWidth="lg">
+          <Stack display="flex" justifyContent="center" direction="row" sx={{gap: '10px'}}>
+            <TrashCan updateRoomPlants={updateRoomPlants} roomPlants={roomPlants} />
+            <Room roomPlants={roomPlants} updateRoomPlants={updateRoomPlants} selectedPlants={selectedPlants}/>
+          </Stack>
+        </Container>
+
       </DndProvider>
     </div>
   );

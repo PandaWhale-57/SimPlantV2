@@ -24,6 +24,7 @@
     "@babel/core": "^7.21.4",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
